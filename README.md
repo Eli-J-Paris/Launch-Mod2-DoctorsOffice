@@ -11,24 +11,42 @@
 [Citation for ERD](https://circle.visual-paradigm.com/hospital/)
 1. Use the Doctors Office ERD above to answer the following questions:
     1. How many patients can each doctor have?
-    1. How many doctors can each patient have?
-    1. How would you describe the relationship between patients and tests? Be sure to use either one-to-one, one-to-many, or many-to-many in your answer.
-    1. What are the foreign keys in this diagram?
-    1. What is the primary key for the Tests table.
-    1. What query would return the number of doctors who have a specialization in "pediatrics"?
+    The Doctor can have many patients as its a part of a one to many relationship
+    
+    3. How many doctors can each patient have
+    A patient can only have one doctor as its another part of a one to many relationship
+    
+    5. How would you describe the relationship between patients and tests? Be sure to use either one-to-one, one-to-many, or many-to-many in your answer.
+    the relationship between the patient and tests tables is a one to many relationship. One patient can have many tests but a test can't have more than one patient.
+    
+    7. What are the foreign keys in this diagram?
+        patient FK: doctor_id
+        tests FK: patient_id
+        doctors PK/FK: id
 
+    9. What is the primary key for the Tests table.
+        The primary key for the tests table is the id column
+
+    11. What query would return the number of doctors who have a specialization in "pediatrics"?
+        SELECT COUNT(name)
+        FROM doctors
+        WHERE specialization = "pediatrics"
 <br>
 
 2. What does a join table do? Why would we need one?
-3. What is a question that the following query helps answer?
+A join table is used to temporarily join two or more tables together when one needs to run queries based on information form more than one table.
+
+4. What is a question that the following query helps answer?
 ```SQL
 SELECT hometown, COUNT(name) FROM artists
 GROUP BY hometown;
 ```
+the question is: how many artists come from each hometown?
 
 4. I'm trying to write a query to find the average age of all patients, but it's not working. How would you modify this query to get it to work as expected?
 ```SQL
-SELECT age FROM AVERAGE(patients);
+SELECT AVG(age)
+FROM patients;
 ```
 5. How would you describe the difference between a `LEFT JOIN` and an `INNER JOIN`
  
