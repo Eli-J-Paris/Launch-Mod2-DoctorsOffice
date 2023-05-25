@@ -65,15 +65,53 @@ Follow these steps to setup the assessment:
 
 Please provide the QUERY (not the answer) that returns each of the following:
 1. The flight numbers for all delayed flights (i.e. not on time).
-2. The count of delayed flights.
-3. The sum of prices for all flights arriving to Raleigh-Durham (`RDU`).
-4. The average price for all flights in the database.
-5. The average price for all flights arriving to Raleigh-Durham.
-6. The departure city and number of flights departing from each city.
-7. The count of airlines in the database.
-8. The count of flights in the database.
-9. The flight number, departure city, arrival city, price, and airline name of each flight. Do not return the airline ID number.
-10. The airline name, flight number, and price of each flight on the Delta airline. (Assume that you do not know the ID number of the Delta airline. In a larger database, you would be expected to memorize ID numbers).
+   SELECT flight_number FROM flights
+WHERE on_time = false;
+
+3. The count of delayed flights.
+SELECT COUNT(flight_number)
+FROM flights
+WHERE on_time = false;
+
+5. The sum of prices for all flights arriving to Raleigh-Durham (`RDU`).
+SELECT SUM(price)
+FROM flights
+WHERE arrive_city ='RDU';
+
+7. The average price for all flights in the database.
+SELECT AVG(price)
+FROM flights
+
+9. The average price for all flights arriving to Raleigh-Durham.
+SELECT AVG(price)
+FROM flights
+WHERE arrive_city ='RDU'
+
+11. The departure city and number of flights departing from each city.
+SELECT depart_city, COUNT(flight_number)
+FROM flights
+GROUP BY depart_city;
+
+13. The count of airlines in the database.
+SELECT COUNT(airline_name)
+FROM airlines;
+
+15. The count of flights in the database.
+SELECT COUNT(flight_number)
+FROM flights;
+
+17. The flight number, departure city, arrival city, price, and airline name of each flight. Do not return the airline ID number.
+SELECT flights.flight_number, flights.depart_city, flights.arrive_city, flights.price, airlines.airline_name
+FROM flights
+JOIN airlines ON flights.id = flights.id
+GROUP BY flights.flight_number, flights.depart_city, flights.arrive_city, flights.price, airlines.airline_name
+
+19. The airline name, flight number, and price of each flight on the Delta airline. (Assume that you do not know the ID number of the Delta airline. In a larger database, you would be expected to memorize ID numbers).
+ 
+ SELECT airlines.airline_name, flights.flight_number, flights.price
+FROM airlines
+ JOIN flights ON airlines.id = airlines.id
+WHERE airlines.airline_name = 'Delta';
 
 ## Submission
 
