@@ -103,7 +103,7 @@ FROM flights;
 17. The flight number, departure city, arrival city, price, and airline name of each flight. Do not return the airline ID number.
 SELECT flights.flight_number, flights.depart_city, flights.arrive_city, flights.price, airlines.airline_name
 FROM flights
-JOIN airlines ON flights.id = flights.id
+JOIN airlines ON flights.id = flights.id   NOTE FROM AFTER ASSESMENT flights.airline_id = airline.id
 GROUP BY flights.flight_number, flights.depart_city, flights.arrive_city, flights.price, airlines.airline_name
 
 19. The airline name, flight number, and price of each flight on the Delta airline. (Assume that you do not know the ID number of the Delta airline. In a larger database, you would be expected to memorize ID numbers).
