@@ -49,7 +49,9 @@ SELECT AVG(age)
 FROM patients;
 ```
 5. How would you describe the difference between a `LEFT JOIN` and an `INNER JOIN`
+ INNER JOIN or the "default" JOIN  only returns records that match's with the ON condition and  will only returns records that have a corresponding record from the first table to the second table 
  
+ LEFT JOIN on the other hand will will get all records from the first table regardless of if they have corresponding rows in the second table
 ## Exercise (10 Points Possible)
 
 Follow these steps to setup the assessment:
